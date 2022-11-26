@@ -1,0 +1,93 @@
+@import './_colors.scss';
+
+$--size-bezel: .5rem;
+$--size-radius: 4px;
+
+// .popup-overlay {
+//     margin: 100px;
+// }
+
+.input {
+    position: relative;
+    &__label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: calc(0.5vmin) calc(2vmin);
+      margin: calc(0.5vmin) 0;
+      white-space: nowrap;
+      transform: translate(0, 0);
+      transform-origin: 0 0;
+      transition: transform 120ms ease-in;
+      line-height: 1.2;
+    }
+    &__field {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      border: 3px solid $pale-grey;
+      padding: calc(2px + 1vmin);
+      margin: calc(25px + 1vmin) 0;
+      color: $pale-grey;
+      background: transparent;
+      border-radius: $--size-radius;
+      
+      &:focus,
+      &:not(:placeholder-shown) {
+        & + .input__label {
+          transform: translate(.25rem, -100%) scale(.8);
+        }
+      }
+    }
+  }
+
+
+.modal {
+    width: 60vw;
+    color: $pale-grey;
+    background: $light-purple;
+    border-radius: 8px;
+    text-align: center;
+    border: 3px solid $purple;
+    box-shadow: .7rem .7rem 0 $purple;
+}
+
+.modal .header {
+    width: 80%;
+    border-bottom: 4px solid $pale-grey;
+    font-size: calc(15px + 1vmin);
+    font-weight: bold;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+.modal .content {
+    width: 90%;
+    padding: 5px 30px;
+    font-size: calc(10px + 1vmin);
+    line-height: calc(15px + 1vmin);
+    margin-bottom: 20px;
+}
+.modal .userinputs {
+    text-align: left;
+}
+.modal .actions {
+    width: 80%;
+    padding: 10px 25px;
+    text-align: center;
+    display: initial;
+}
+.modal .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}

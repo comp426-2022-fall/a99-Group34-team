@@ -1,0 +1,40 @@
+@import '_colors.scss';
+
+$themes: (
+  light: (
+    primary-color: $dark-blue,
+    accent-color: $black,
+    primary-text-color: $dark-blue,
+    secondary-text-color: $black,
+    general-background: $pale-grey,
+    button-background: rgba(51, 51, 51, 0.05),
+    interactive-background: linear-gradient(-45deg, $light-yellow, $light-red, $light-blue, $light-purple)
+  ),
+  dark: (
+    primary-color: $blue-green,
+    accent-color: $green,
+    primary-text-color: $blue-green,
+    secondary-text-color: $pale-grey,
+    general-background: $dark-blue,
+    button-background: rgba(51, 51, 51, 0.05),
+    interactive-background: linear-gradient(-45deg, $yellow, $red, $purple, $blue-purple)
+  )
+);
+
+@mixin themed() {
+    @each $theme, $map in $themes {
+      .theme--#{$theme} & {
+        $theme-map: () !global;
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), '#{$key}');
+          $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        }
+        @content;
+        $theme-map: null !global;
+      }
+    }
+  }
+  
+  @function themedStyle($key) {
+    @return map-get($theme-map, $key);
+  }
