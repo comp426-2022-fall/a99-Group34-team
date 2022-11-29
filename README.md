@@ -1,16 +1,46 @@
-# a99 Final Project Group 34
+* Placeholder for Table of Contents
 
-## UPDATE
-
-You don't need to accept this assignment since you are already assigned to teams. So, there is no assignment invite link for a99.
+# HttpBin GUI
+---
+### `Final Project Group 34`
 
 ## Summary 
+A GUI for the Open API "httpbin", a simple HTTP Request &amp; Response Service, allowing easier testing/inspecting request and response objects when making HTTP operations.  User Authentication enabled by JWT Tokens.
 
-COMP426 final project template repository.
-All your code and documentation goes here.
-Change this text to be a brief description of your final project.
-Put the name of your project in the header above.
-You will change everything below to be the main technical documentation, as outlined below.
+## To Run
+
+1. Start the backend API server on PORT 5555
+
+```bash
+cd backendServer
+
+npm i
+
+npm test
+```
+
+2. Start the frontend React web app on PORT 3000
+
+```bash
+cd frontendClient
+
+npm i
+
+npm start
+```
+
+## Types of CRUD Supported (TBD)
+
+`DELETE`
+
+`GET`
+
+`POST`
+
+`PATCH`
+
+`PUT`
+
 
 ## First steps
 
@@ -50,6 +80,5 @@ Some basic roles you will want to consider:
 You will notice that there are more roles than people in your group.
 That is because you will all be doing a hybrid job of managing a thing while working on other things.
 
-## Check in with instructional staff
 
-Schedule a few times throughout the rest of the semester for your team to check-in with your assigned instructional staff member during their scheduled office hours. 
+
