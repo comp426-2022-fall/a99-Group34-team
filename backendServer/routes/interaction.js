@@ -66,4 +66,21 @@ router.post('/:username/new', verifyToken, async (req, res, next) => {
 
   });
 
+
+router.get('/:username/getCookie', verifyToken, async (req, res, next) => {
+    verify(req.token, "secretkeyappearshere", (err, authData) => {
+        if (err) {
+          res.sendStatus(403);
+        } else {
+
+            res
+            .status(200)
+            .cookie('cookie', 'man oh man')
+            .json({
+                success: true
+            });
+        }
+    })
+});
+
 export default router;
