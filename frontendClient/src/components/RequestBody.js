@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Spreadsheet, DataEditor } from "react-spreadsheet";
+import add from "../add.svg";
+import deleteLogo from "../delete.svg";
 
 const RequestBody = () => {
     const [data, setData] = useState([
@@ -20,18 +22,19 @@ const RequestBody = () => {
 
     return (
         <div>
-            <Spreadsheet className={'table'} data={data} onChange={setData}/>
-
-            <div>
-            <button onClick={()=>(setData([...data,[...data[0].map(()=>({value:""}))]]))}> Add Row </button>
-            <button onClick={()=>(setData(addColumn()))}> Add Column </button>
-            <button onClick={()=>(setData([...data.slice(0,-1)]))}> Delete Row </button>
-            {/* <button onClick={()=>(setData([[...data[0].slice(0,-1)],...data.slice(1)]))}> Delete Column </button> */}
+            <div className="table">
+                <div className="table-control">
+                    <button className="add-control" onClick={()=>(setData(addColumn()))}> <img src={add} className="icon-logo" alt="addLogo" /> Column </button>
+                    <button className="delete-control" onClick={()=>(setData(data.map((row)=>row.slice(0,-1))))}> <img src={deleteLogo} className="icon-logo" alt="deleteLogo" /> Column </button>
+                </div>
+                <div className="table-control">
+                    <button className="add-control" onClick={()=>(setData([...data,[...data[0].map(()=>({value:""}))]]))}> <img src={add} className="icon-logo" alt="addLogo" /> Row </button>
+                    <button className="delete-control" onClick={()=>(setData([...data.slice(0,-1)]))}> <img src={deleteLogo} className="icon-logo" alt="deleteLogo" /> Row </button>
+                </div>
             </div>
-            <button onClick={()=>(setData(data.map((row)=>row.slice(0,-1))))}> Delete Column </button>
-
-
-            
+            <div className="table">
+                <Spreadsheet className={'table'} data={data} onChange={setData}/>
+            </div>
         </div>
     );
 }

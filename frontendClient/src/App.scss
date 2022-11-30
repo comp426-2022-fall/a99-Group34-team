@@ -5,7 +5,7 @@
 @import './styles/modal.scss';
 
 .App {
-  text-align: center;
+  text-align: left;
   padding-bottom: 100px;
   @include themed() {
     color: themedStyle('primary-color');
@@ -21,11 +21,33 @@
   padding:20px 30px;
 }
 
+.table {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  .add-control {
+    @include themed() {
+      background: themedStyle('positive-background')
+    }
+  }
+  .delete-control {
+    @include themed() {
+      background: themedStyle('warning-background')
+    }
+  }
+}
+
 .table .Spreadsheet__cell {
   @include themed() {
     color: themedStyle('primary-color');
     background: themedStyle('general-background')
   }
+}
+
+.table .table-control {
+  display: grid;
+  height: min-content;
+  padding: 10px;
 }
 
 .header-row {
@@ -54,6 +76,16 @@ label span {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.icon-logo {
+  height: 2.5vmin;
+  padding: 0 3px;
+}
+
+.cookie-logo {
+  height: 5vmin;
+  padding: 0 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

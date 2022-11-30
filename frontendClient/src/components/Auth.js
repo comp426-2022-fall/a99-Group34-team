@@ -40,10 +40,18 @@ const Auth = () => {
             }
             response = await postLoggingIn(userdata);
         }
+        if (response.status === 500) {
+            if (isSignUp){
+                alert('A user with this username already exists, please try a different username!');
+            } else {
+                alert('Wrong Username or Password, please try again!');
+            }
+            return setIsLoggedIn(false);
+        }
         const data = await response.json();
         console.log(data);
         if (data['success'] === true){
-            setIsLoggedIn(true);
+            return setIsLoggedIn(true);
         } else {
             alert('Error occured logging in / signing up'+data);
         }
