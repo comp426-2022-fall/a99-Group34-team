@@ -1,11 +1,13 @@
 * Placeholder for Table of Contents
 
-# HttpBin GUI
+# Cookies Simulator
 ---
 ### `Final Project Group 34`
 
 ## Summary 
-A GUI for the Open API "httpbin", a simple HTTP Request &amp; Response Service, allowing easier testing/inspecting request and response objects when making HTTP operations.  User Authentication enabled by JWT Tokens.
+A blueprint full-stack web app simulating receiving browser cookies from an API. Featuring user authentication on the backend implemented through generating and verifying JWT tokens on HTTP requests, React frontend adhering to atomic design principles with a "light" and "dark" mode.
+
+Users with admin access can set the key and values of browser cookies regular users receive, and only logged in users can receive cookies. The admin user is created upon initial set up of the application, the instructions for which is under [`To Run`](#to-run).
 
 ## To Run
 
@@ -29,19 +31,26 @@ npm i
 npm start
 ```
 
-## Types of CRUD Supported (TBD)
 
-`DELETE`
+## Two Modes Supported ("light" and "dark")
 
-`GET`
+### `Light`
+<img width="937" alt="image" src="https://user-images.githubusercontent.com/55526292/205512901-50c2b755-9244-4157-a3ba-5e586ce9979a.png">
 
-`POST`
-
-`PATCH`
-
-`PUT`
+### `Dark`
+<img width="937" alt="image" src="https://user-images.githubusercontent.com/55526292/205512912-9f956767-2c95-4675-8c2b-5e4486ce2940.png">
 
 
+## Roles and Tasks
+
+Roles for team members to take charge or different parts of the project.
+    1. Front end lead: @malleedi
+    2. Back end lead: @daqichen
+    3. Database lead: @JadJ23
+    4. Design lead: @daqichen
+    5. Etc.
+    
+    
 ## First steps
 
 Other steps that you will need to take after your team has accepted the assignment:
