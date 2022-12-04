@@ -44,12 +44,16 @@ npm start
 ## Roles and Tasks
 
 Roles for team members to take charge or different parts of the project.
-    1. Front end lead: @malleedi
-    2. Back end lead: @daqichen
-    3. Database lead: @JadJ23
-    4. Design lead: @daqichen
-    5. Etc.
-    
+
+```json
+{
+    "Front end lead": "Reshmasai Malleedi @malleedi",
+    "Back end lead": "Jen Chen @daqichen",
+    "Database lead": "Jad Jarkas @JadJ23",
+    "Design lead": "Jen Chen @daqichen",
+    "Etc": ,
+}
+```
     
 ## First steps
 
