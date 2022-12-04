@@ -43,19 +43,26 @@ npm start
 
 ## Roles and Tasks
 
-Roles for team members to take charge or different parts of the project.
-
 ```json
-{
-    "Front end lead": "Reshmasai Malleedi @malleedi",
-    "Back end lead": "Jen Chen @daqichen",
-    "Database lead": "Jad Jarkas @JadJ23",
-    "Design lead": "Jen Chen @daqichen",
-    "Etc": ,
+"Roles and Tasks": {
+    "Review manager": "Jen Chen @daqichen",
+    "Plan manager": "Noe Brown @noebrown",
+    "Documentation manager": "Jen Chen @daqichen",
+    "Release manager": "Jad Jarkas @JadJ23",
+    "Project manager": "Reshmasai Malleedi @malleedi",
+    "Leads": 
+    {
+        "Front end lead": "Reshmasai Malleedi @malleedi",
+        "Back end lead": "Jen Chen @daqichen",
+        "Database lead": "Jad Jarkas @JadJ23",
+        "Design lead": "Jen Chen @daqichen",
+        "Testing lead": "Noe Brown @noebrown",
+        "Etc":,
+    }
 }
 ```
     
-## First steps
+## First steps (from Instructions)
 
 Other steps that you will need to take after your team has accepted the assignment:
 
@@ -69,12 +76,7 @@ Other steps that you will need to take after your team has accepted the assignme
 9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
 10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
 
-## Team mangement
-
-Plan to meet with your team ASAP.
-Talk through identifying roles within your team.
-
-Try to figure out what each of you are good at/enjoy doing and try to work out roles that incorporate that.
+## Team mangement (from Instructions)
 
 Some basic roles you will want to consider:
 
