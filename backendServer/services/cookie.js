@@ -1,9 +1,9 @@
 // services folder
-import { query, queryOne, run, seed } from './userDB.js';
+import { query, queryOne, run, seed, runPlain } from './userDB.js';
 
-const getRandomCookie = (createdby) => {
+const getRandomCookie = (accessedby) => {
     seed();
-    const data = queryOne('SELECT * FROM cookie ORDER BY RAND()');
+    const data = runPlain('SELECT * FROM cookie ORDER BY RANDOM() LIMIT 1');
     console.log(data);
     return data;
 }

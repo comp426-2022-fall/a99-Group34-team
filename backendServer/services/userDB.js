@@ -48,9 +48,14 @@ const run = (sql, params) => {
     return db.prepare(sql).run(params);
 }
 
+const runPlain = (sql) => {
+    return db.prepare(sql).all();
+}
+
 export {
     seed,
     query,
     queryOne,
-    run
+    run,
+    runPlain
 }
