@@ -21,9 +21,9 @@
   padding:20px 30px;
 }
 
-.top-navigation2{
-  display: flex;
-  padding: 0px 30px;
+.auth-menu{
+  display: block;
+  padding:10px 5px;
 }
 
 .table {
@@ -72,6 +72,10 @@
 }
 }
 
+.information {
+  color: black;
+  padding: 10px;
+}
 
 label span {
   margin:15px;

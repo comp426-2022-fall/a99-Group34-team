@@ -47,3 +47,43 @@ export const postLoggingOut = async () => {
     }
     return fetch('http://localhost:5555/app/user/logout', options);
 }
+
+export const patchChangeUsername = async (data) => {
+    const options = {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        json: data,
+        body: JSON.stringify(data)
+    }
+    return fetch('http://localhost:5555/app/user/changeUsername', options);
+}
+
+export const patchChangeEmail = async (data) => {
+    const options = {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        json: data,
+        body: JSON.stringify(data)
+    }
+    return fetch('http://localhost:5555/app/user/changeEmail', options);
+}
+
+export const patchChangePassword= async (data) => {
+    const options = {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        json: data,
+        body: JSON.stringify(data)
+    }
+    return fetch('http://localhost:5555/app/user/changePassword', options);
+}
+

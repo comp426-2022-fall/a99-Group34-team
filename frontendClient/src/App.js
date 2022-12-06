@@ -79,11 +79,11 @@ const App = () => {
       <div className={`theme--${themeDropDown}`}>
       <div className="App">
         <div className="top-navigation">
-          <Auth />
+          <div className="auth-menu">
+            <Auth /> <br />
+            {isLoggedIn && <Profile />}
+          </div>
           <ThemeToggle />
-        </div>
-        <div className = "top-navigation2">
-          <Profile />
         </div>
 
       
