@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import logo from './cookie.svg';
 import ThemeToggle from './components/ThemeToggle';
 import Auth from './components/Auth';
+import Profile from './components/Profile';
 import CookieFail from './components/CookieFail';
 import RequestBody from './components/RequestBody';
 // styling
@@ -81,6 +82,10 @@ const App = () => {
           <Auth />
           <ThemeToggle />
         </div>
+        <div className = "top-navigation2">
+          <Profile />
+        </div>
+
       
         <header className="App-header">
           <a onClick={() => handleCookie()}><img src={logo} className="App-logo" alt="logo" /> </a>
