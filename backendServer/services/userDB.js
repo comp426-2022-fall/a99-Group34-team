@@ -14,11 +14,20 @@ const seed = () => {
     CREATE TABLE IF NOT EXISTS interaction (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username VARCHAR, 
-        crud_type VARCHAR,
-        url VARCHAR,
+        cookie_key VARCHAR,
+        cookie_value VARCHAR,
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (username)
         REFERENCES user (username)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+    );
+
+    CREATE TABLE IF NOT EXISTS cookie(
+        cookie_key VARCHAR PRIMARY KEY,
+        cookie_value VARCHAR,
+        username VARCHAR,
+        FOREIGN KEY(username) REFERENCES user(username)
             ON DELETE CASCADE
             ON UPDATE CASCADE
     );
