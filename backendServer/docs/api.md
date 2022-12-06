@@ -6,6 +6,9 @@
     - [POST `/user/login`](#post-userlogin)
     - [POST `/user/logout`](#post-userlogout)
     - [POST `/user/signup`](#post-usersignup)
+    - [PATCH `/user/changeUsername`](#patch-userchangeusername)
+    - [PATCH `/user/changeEmail`](#patch-userchangeemail)
+    - [PATCH `/user/changePassword`](#patch-userchangepassword)
     - [POST `/user/postaction`](#post-userpostaction)
   - [2. User-specific Interactions Logging and Retrieval](#2-user-specific-interactions-logging-and-retrieval)
     - [GET `/interaction/:username`](#get-interactionusername)
@@ -66,6 +69,50 @@ res
         data: { username: newUser.username,
             email: newUser.email, token: token },
       });
+```
+
+
+### PATCH `/user/changeUsername`
+Verify JWT token and existing credentials associated with user before updating the username. A new JWT token is assigned.
+
+```js
+res
+    .status(201)
+    .cookie('token', token, {httpOnly: true})
+    .json({
+      success: true,
+      data: { username: updatedUser.new_username,
+          email: updatedUser.email, token: token },
+    });
+```
+
+### PATCH `/user/changeEmail`
+Verify JWT token and existing credentials associated with user before updating the email. A new JWT token is assigned.
+
+```js
+res
+    .status(201)
+    .cookie('token', token, {httpOnly: true})
+    .json({
+      success: true,
+      data: { username: updatedUser.username,
+          email: updatedUser.new_email, token: token },
+    });
+```
+
+
+### PATCH `/user/changePassword`
+Verify JWT token and existing credentials associated with user before updating the password. A new JWT token is assigned.
+
+```js
+res
+    .status(201)
+    .cookie('token', token, {httpOnly: true})
+    .json({
+      success: true,
+      data: { username: updatedUser.username,
+          email: updatedUser.email, token: token },
+    });
 ```
 
 ### POST `/user/postaction`

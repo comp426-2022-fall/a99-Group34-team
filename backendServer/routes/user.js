@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { getExistingUser, createNewUser } from "../services/user.js";
+import { getExistingUser, createNewUser, updateUser } from "../services/user.js";
 import jwt from 'jsonwebtoken';
 const { sign, verify } = jwt;
 
@@ -115,5 +115,170 @@ router.post("/postaction", verifyToken, (req, res) => {
     });
   });
 
+// Handling changeUsername request
+router.patch("/changeUsername", verifyToken, async (req, res, next) => {
+   verify(req.token, "secretkeyappearshere", (err, authData) => {
+        if (err) {
+          res.sendStatus(403);
+        } else {
+          const { old_username, new_username, email, password } = req.body;
+          const updatedUser = {
+            old_username: old_username,
+            new_username: new_username,
+            email: email,
+            password: password,
+          };
+        
+          let result;
+          try {
+            result = updateUser(updatedUser, 'username');
+          } catch (e) {
+            res
+            .status(401)
+            .json({
+              success: false,
+              error: e,
+            });
+            return;
+          }
+          let token;
+          try {
+            token = jwt.sign(
+              { username: updatedUser.new_username, email: updatedUser.email },
+              "secretkeyappearshere",
+              { expiresIn: "1h" }
+            );
+          } catch (err) {
+            res
+            .sendStatus(401)
+            .json({
+              success: false,
+              error: err,
+            });
+            return;
+          }
+          res
+            .status(201)
+            .cookie('token', token, {httpOnly: true})
+            .json({
+              success: true,
+              data: { username: updatedUser.new_username,
+                  email: updatedUser.email, token: token },
+            });
+
+        }
+    })
+});
+ 
+
+// Handling changeEmail request
+router.patch("/changeEmail", verifyToken, async (req, res, next) => {
+  verify(req.token, "secretkeyappearshere", (err, authData) => {
+       if (err) {
+         res.sendStatus(403);
+       } else {
+         const { username, old_email, new_email, password } = req.body;
+         const updatedUser = {
+           username: username,
+           old_email: old_email,
+           new_email: new_email,
+           password: password,
+         };
+       
+         let result;
+         try {
+           result = updateUser(updatedUser, 'email');
+         } catch (e) {
+           res
+           .status(401)
+           .json({
+             success: false,
+             error: e,
+           });
+           return;
+         }
+         let token;
+         try {
+           token = jwt.sign(
+             { username: updatedUser.username, email: updatedUser.new_email },
+             "secretkeyappearshere",
+             { expiresIn: "1h" }
+           );
+         } catch (err) {
+           res
+           .sendStatus(401)
+           .json({
+             success: false,
+             error: err,
+           });
+           return;
+         }
+         res
+           .status(201)
+           .cookie('token', token, {httpOnly: true})
+           .json({
+             success: true,
+             data: { username: updatedUser.username,
+                 email: updatedUser.new_email, token: token },
+           });
+
+       }
+   })
+});
+
+// Handling changePassword request
+router.patch("/changePassword", verifyToken, async (req, res, next) => {
+  verify(req.token, "secretkeyappearshere", (err, authData) => {
+       if (err) {
+         res.sendStatus(403);
+       } else {
+         const { username, email, old_password, new_password } = req.body;
+         const updatedUser = {
+           username: username,
+           email: email,
+           old_password: old_password,
+           new_password: new_password
+         };
+       
+         let result;
+         try {
+           result = updateUser(updatedUser, 'password');
+         } catch (e) {
+           res
+           .status(401)
+           .json({
+             success: false,
+             error: e,
+           });
+           return;
+         }
+         let token;
+         try {
+           token = jwt.sign(
+             { username: updatedUser.username, email: updatedUser.email },
+             "secretkeyappearshere",
+             { expiresIn: "1h" }
+           );
+         } catch (err) {
+           res
+           .sendStatus(401)
+           .json({
+             success: false,
+             error: err,
+           });
+           return;
+         }
+         res
+           .status(201)
+           .cookie('token', token, {httpOnly: true})
+           .json({
+             success: true,
+             data: { username: updatedUser.username,
+                 email: updatedUser.email, token: token },
+           });
+
+       }
+   })
+});
 
 export default router;

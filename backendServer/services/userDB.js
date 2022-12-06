@@ -6,7 +6,8 @@ const db = new Database('user.db', {verbose: console.log});
 const seed = () => {
     const userInit = `
     CREATE TABLE IF NOT EXISTS user (
-        username VARCHAR PRIMARY KEY, 
+        user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username VARCHAR UNIQUE, 
         email VARCHAR, 
         password VARCHAR
     );
