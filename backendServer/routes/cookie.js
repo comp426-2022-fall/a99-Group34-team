@@ -16,14 +16,47 @@ router.get('/:username', verifyToken, async (req, res, next) => {
             let cookieData;
             try {
                 cookieData = getRandomCookie(username);
-            } catch {
-                const error = new Error("Error! Something went wrong.");
+            } catch (e) {
+                const error = new Error(e);
                 return next(error);
             }
         
             res
                 .status(200)
                 .cookie(cookieData.cookie_key, cookieData.cookie_value)
+                .json({
+                success: true,
+                data: cookieData
+                });
+            }
+      });
+
+  });
+
+// POST `/cookie/:username/new`
+router.post('/:username/new', verifyToken, async (req, res, next) => {
+    verify(req.token, "secretkeyappearshere", (err, authData) => {
+        if (err) {
+          res.sendStatus(403);
+        } else {
+            const {username} = req.params;
+            const {cookie_key, cookie_value} = req.body;
+            const newCookie = {
+                cookie_key: cookie_key,
+                cookie_value: cookie_value,
+                createdby: username
+              };
+            let cookieData;
+            try {
+                cookieData = postNewCookie(newCookie);
+            } catch (e) {
+                console.log(e);
+                const error = new Error("Error! Something went wrong.");
+                return next(error);
+            }
+        
+            res
+                .status(200)
                 .json({
                 success: true,
                 data: cookieData
