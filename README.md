@@ -1,5 +1,16 @@
-* Placeholder for Table of Contents
-
+- [Cookies Simulator](#cookies-simulator)
+    - [`Final Project Group 34`](#final-project-group-34)
+  - [Summary](#summary)
+  - [To Run](#to-run)
+  - [API Specifications](#api-specifications)
+  - [Default Admin User](#default-admin-user)
+  - [Editing Profile](#editing-profile)
+  - [Two Modes Supported ("light" and "dark")](#two-modes-supported-light-and-dark)
+    - [`Light`-mode](#light-mode)
+    - [`Dark`-mode](#dark-mode)
+  - [Roles and Tasks](#roles-and-tasks)
+  - [Deliverables](#deliverables)
+  
 # Cookies Simulator
 ---
 ### `Final Project Group 34`
@@ -31,15 +42,39 @@ npm i
 npm start
 ```
 
+## API Specifications
+
+See details at [`/docs/api`](https://github.com/comp426-2022-fall/a99-Group34-team/tree/main/docs/api.md). 
+
+## Default Admin User
+
+Upon initial set up, an `admin` user is available for creating "cookies". 
+
+<img width="795" alt="image" src="https://user-images.githubusercontent.com/55526292/206082209-1969c1e9-c860-4217-8097-48ae7ca7877b.png">
+
+Once a few cookies have been generated for user to retrieve, `admin` as well as `non-admin` users can click the **"spinning cookie"** icon on the landing page to receive one of them at **RANDOM**.
+
+The `admin` can also review all `non-admin` users within the Database and the cookies they had received before.
+
+Both **creating 'cookies'** and **reviewing `non-admin` user interactions** are `admin`-specific actions.
+
+
+## Editing Profile
+
+ALL users can edit details regarding their profile, including `username`, `password`, and `email`. 
+
+<img width="818" alt="image" src="https://user-images.githubusercontent.com/55526292/206083631-2a48ee4c-2471-479e-af04-2c6044e7e25d.png">
+
+The change will go through **only when** all THREE of the current profile details are a match.
+
 
 ## Two Modes Supported ("light" and "dark")
 
-### `Light`
-<img width="937" alt="image" src="https://user-images.githubusercontent.com/55526292/205512901-50c2b755-9244-4157-a3ba-5e586ce9979a.png">
+### `Light`-mode
+<img width="1433" alt="image" src="https://user-images.githubusercontent.com/55526292/206083284-644dbcc0-6ac5-4cdd-bb92-01100127bcf8.png">
 
-### `Dark`
-<img width="937" alt="image" src="https://user-images.githubusercontent.com/55526292/205512912-9f956767-2c95-4675-8c2b-5e4486ce2940.png">
-
+### `Dark`-mode
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/55526292/206083369-2b62a71d-b154-43ad-b2db-13a319780db2.png">
 
 ## Roles and Tasks
 
@@ -61,39 +96,6 @@ npm start
     }
 }
 ```
-    
-## First steps (from Instructions)
-
-Other steps that you will need to take after your team has accepted the assignment:
-
-1. Choose a license and update the LICENSE file accordingly. 
-2. Edit this README.md file and use it as the main location of your technical documentation with links out to information contained under `/docs/`.
-3. Create a `/docs/` directory for more elaborate documentation of your API, planning notes, etc.
-4. Make sure that all of your team members have access to the repository as administrators.
-5. Create a project under the **Projects** tab. Use this to manage your planning. Create a To-do list, etc. Explore the tools available and user them to manage your project.
-7. Assign team roles and include a listing of those roles in this README.md file or in another file under `/docs/`.
-8. Then put your entire development workflow in this repository.
-9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
-10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
-
-## Team mangement (from Instructions)
-
-Some basic roles you will want to consider:
-
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-4. A release manager - someone to manage the packaging and release process for your prototype package
-5. A project manager - someone keeping track of all the moving parts and make sure that everything that needs to happen is happening.
-5. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-    2. Back end lead
-    3. Database lead
-    4. Design lead
-    5. Etc.
-
-You will notice that there are more roles than people in your group.
-That is because you will all be doing a hybrid job of managing a thing while working on other things.
 
 ## Deliverables
 

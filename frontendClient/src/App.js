@@ -92,7 +92,7 @@ const App = () => {
           <a onClick={() => handleCookie()}><img src={logo} className="App-logo" alt="logo" /> </a>
           <CookieFail open={cookieFail} closeModal={setCookieFail}/>
           <CookieSuccess open={cookieSuccess} closeModal={setCookieSuccess}/>
-          <h1>Cookies Simulator</h1>
+          <h1> {isLoggedIn && `Welcome, ${localStorage.getItem('kerberos')}, to`} Cookies Simulator</h1>
           <div className='table'>
           <RequestBody />
           <br/> <br/>

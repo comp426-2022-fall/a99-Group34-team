@@ -51,6 +51,7 @@ const Auth = () => {
         const data = await response.json();
         console.log(data);
         if (data['success'] === true){
+            localStorage.setItem('kerberos', data['data']['username']);
             return setIsLoggedIn(true);
         } else {
             alert('Error occured logging in / signing up'+data);
@@ -59,7 +60,8 @@ const Auth = () => {
 
     return (
         <div className="Theme-popover">
-            {isLoggedIn ? <button onClick={()=>(handleLogout())}>Sign out</button>
+            {isLoggedIn ? 
+                <button onClick={()=>(handleLogout())}>Sign out</button>
             :
              <Popup
                 trigger={<button>Log in / Sign up</button>}
