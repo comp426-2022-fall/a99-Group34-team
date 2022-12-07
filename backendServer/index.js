@@ -3,6 +3,7 @@ import express, { Router, urlencoded, json } from "express";
 import userRouter from './routes/user.js';
 import interactionRouter from './routes/interaction.js';
 import cookieRouter from './routes/cookie.js';
+import adminRouter from './routes/admin.js';
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -28,6 +29,7 @@ app.get('/app', (req, res) => {
 app.use('/app/user', userRouter);
 app.use('/app/interaction', interactionRouter);
 app.use('/app/cookie', cookieRouter);
+app.use('/app/admin', adminRouter);
 
 app.use(function (req, res) {
     res.send('404 NOT FOUND');

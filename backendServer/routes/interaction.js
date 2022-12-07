@@ -13,9 +13,10 @@ router.get('/:username', verifyToken, async (req, res, next) => {
           res.sendStatus(403);
         } else {
             const {username} = req.params;
+            
             let interactionsData;
             try {
-                interactionsData = getUserInteractions(username);
+                interactionsData = getUserInteractions(authData.username, username);
             } catch {
                 const error = new Error("Error! Something went wrong.");
                 return next(error);
@@ -33,6 +34,7 @@ router.get('/:username', verifyToken, async (req, res, next) => {
   });
 
 
+// PHASE OUT
 // POST `/interaction/:username/new`
 router.post('/:username/new', verifyToken, async (req, res, next) => {
     verify(req.token, "secretkeyappearshere", (err, authData) => {
@@ -67,6 +69,7 @@ router.post('/:username/new', verifyToken, async (req, res, next) => {
   });
 
 
+// Phased out
 router.get('/:username/getCookie', verifyToken, async (req, res, next) => {
     verify(req.token, "secretkeyappearshere", (err, authData) => {
         if (err) {

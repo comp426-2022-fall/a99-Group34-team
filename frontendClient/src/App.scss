@@ -29,7 +29,8 @@
 .table {
   font-size: 20px;
   display: flex;
-  justify-content: center;
+  overflow: auto;
+  justify-content: left;
   .add-control {
     @include themed() {
       background: themedStyle('positive-background')
@@ -72,18 +73,16 @@
 }
 }
 
-.information {
-  color: black;
-  padding: 10px;
-}
-
 label span {
   margin:15px;
   font-size: 20px;
 }
 
+.select__menu {
+  color:$dark-blue;
+}
 .App-logo {
-  height: 40vmin;
+  height: 25vmin;
   pointer-events: none;
 }
 

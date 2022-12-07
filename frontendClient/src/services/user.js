@@ -87,3 +87,16 @@ export const patchChangePassword= async (data) => {
     return fetch('http://localhost:5555/app/user/changePassword', options);
 }
 
+
+export const deleteUser = async (data) => {
+    const options = {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        json: data,
+        body: JSON.stringify(data)
+    }
+    return fetch('http://localhost:5555/app/user/deleteUser', options);
+}
