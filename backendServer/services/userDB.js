@@ -9,8 +9,11 @@ const seed = () => {
         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
         username VARCHAR UNIQUE, 
         email VARCHAR, 
-        password VARCHAR
+        password VARCHAR,
+        role_type INTEGER
     );
+
+    INSERT OR IGNORE INTO user (username, email, password, role_type) VALUES ('admin', 'changethis', 'admin', 0);
 
     CREATE TABLE IF NOT EXISTS interaction (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,6 +23,10 @@ const seed = () => {
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (accessedby)
         REFERENCES user (username)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+        FOREIGN KEY (cookie_key)
+        REFERENCES cookie (cookie_key)
             ON DELETE CASCADE
             ON UPDATE CASCADE
     );
@@ -33,6 +40,8 @@ const seed = () => {
             ON DELETE CASCADE
             ON UPDATE CASCADE
     );
+
+
     `;
     db.exec(userInit);
 }

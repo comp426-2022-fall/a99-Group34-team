@@ -1,20 +1,52 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { LoggedInContext } from "../App";
 import Popup from "reactjs-popup";
 import logo from '../edit.svg';
 import Select from 'react-select';
-import { patchChangeEmail, patchChangePassword, patchChangeUsername } from "../services/user";
+import { postIsLoggedIn, deleteUser, patchChangeEmail, patchChangePassword, patchChangeUsername } from "../services/user";
 
 const Profile = () => {
+    useEffect(() => {
+        const fetchLoggedIn = async() => {
+          const response = await postIsLoggedIn();
+          return response;
+        }
+    
+        const response = fetchLoggedIn()
+          .then((res)=> {
+            if (res.status === 403) {
+              console.log('IN PROFILE EDIT: forbidden, setting isLoggedIn to false')
+              setIsLoggedIn(false);
+            } else {
+              setIsLoggedIn(true);
+            }
+            return res.json();
+          })
+          .then((data)=> {
+            localStorage.setItem('kerberos', data['authData']['username']);
+              
+          })
+          .catch(console.error);
+
+        setUserdata({...userdata, 
+            username: localStorage.getItem('kerberos'),
+            old_username: localStorage.getItem('kerberos')
+        })
+            
+      },[])
+
+    const {isLoggedIn, setIsLoggedIn} = useContext(LoggedInContext);
+
 
     const [changeEmail, setChangeEmail] = useState(false);
     const [changePassword, setChangePassword] = useState(false);
     const [changeUsername, setChangeUsername] = useState(false);
 
     const [userdata, setUserdata] = useState({
-        username: localStorage.getItem('kerberos'),
+        username: "",
         password: "",
         email: "",
-        old_username: localStorage.getItem('kerberos'),
+        old_username: "",
         old_password: "",
         old_email: "",
         new_username:"",
@@ -57,7 +89,11 @@ const Profile = () => {
 
     const handleSubmit = async() => {
         if (userdata.email==''||userdata.password==''||userdata.username==''){
-            alert('Missing one or more inputs')
+            alert('Missing one or more inputs');
+            return;
+        }
+        if (!changeEmail && !changePassword && !changeUsername){
+            alert('No change specified, Profile details remains unchanged');
             return;
         }
         changeEmail && handleChangeEmail();
@@ -66,6 +102,23 @@ const Profile = () => {
         setChangeUsername(false);
         setChangeEmail(false);
         setChangePassword(false);
+    }
+
+    const handleDeleteUser = async() => {
+        if (userdata.email==''||userdata.password==''||userdata.username==''){
+            alert('Missing one or more inputs');
+            return;
+        }
+        console.log(userdata);
+        const response = await deleteUser(userdata);
+        const data = await response.json();
+        console.log(data);
+        if (data['success'] === true){
+            setIsLoggedIn(false);
+            alert('User has been successfully deleted and you are logged out!')
+        } else {
+            alert('Error occured: '+data['error']);
+        }
     }
 
     const options = [
@@ -190,15 +243,33 @@ const Profile = () => {
                             Confirm Changes
                         </button>
                     <div className="actions">
-                        <button
-                            className="button-2"
-                            onClick={() => {
-                            console.log('modal closed ');
-                            close();
-                            }}
-                        >
-                            Delete User
-                        </button>
+                    <Popup
+                        trigger={<button className="button-2"> Delete User </button>}
+                        position="top center"
+                        nested
+                    >
+                        <div className="modal-danger">
+                            <div className="header"> Are you sure? </div>
+                            <button
+                                className="button"
+                                onClick={() => {
+                                handleDeleteUser();
+                                close();
+                                }}
+                            >
+                                I know what I am doing
+                            </button>
+                            <button
+                                className="button"
+                                onClick={() => {
+                                close();
+                                }}
+                            >
+                                Nah I take that back
+                            </button>
+                        </div>
+                    </Popup>
+                        
                     </div>
                     </div>
                 </div>

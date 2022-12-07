@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { getExistingUser, createNewUser, updateUser } from "../services/user.js";
+import { getExistingUser, createNewUser, updateUser, deleteAUser } from "../services/user.js";
 import jwt from 'jsonwebtoken';
 const { sign, verify } = jwt;
 
@@ -275,6 +275,44 @@ router.patch("/changePassword", verifyToken, async (req, res, next) => {
              success: true,
              data: { username: updatedUser.username,
                  email: updatedUser.email, token: token },
+           });
+
+       }
+   })
+});
+
+// TODO: Handling delete User request
+router.delete("/deleteUser", verifyToken, async (req, res, next) => {
+  verify(req.token, "secretkeyappearshere", (err, authData) => {
+       if (err) {
+         res.sendStatus(403);
+       } else {
+         const { username, email, password } = req.body;
+         const deleteUser = {
+           username: username,
+           email: email,
+           password: password
+         };
+       
+         let result;
+         try {
+           result = deleteAUser(deleteUser);
+         } catch (e) {
+           res
+           .status(401)
+           .json({
+             success: false,
+             error: e,
+           });
+           return;
+         }
+         res
+           .status(201)
+           .cookie('token', null, {httpOnly: true})
+           .json({
+             success: true,
+             data: { username: deleteUser.username,
+                 email: deleteUser.email},
            });
 
        }

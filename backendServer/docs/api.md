@@ -9,11 +9,18 @@
     - [PATCH `/user/changeUsername`](#patch-userchangeusername)
     - [PATCH `/user/changeEmail`](#patch-userchangeemail)
     - [PATCH `/user/changePassword`](#patch-userchangepassword)
-    - [POST `/user/postaction`](#post-userpostaction)
+    - [DELETE `/user/deleteUser`](#delete-userdeleteuser)
+    - [POST `/user/postaction` (Deprecated after Testing)](#post-userpostaction-deprecated-after-testing)
   - [2. User-specific Interactions Logging and Retrieval](#2-user-specific-interactions-logging-and-retrieval)
     - [GET `/interaction/:username`](#get-interactionusername)
-    - [POST `/interaction/:username/new`](#post-interactionusernamenew)
-    - [GET `/interaction`](#get-interaction)
+    - [POST `/interaction/:username/new` (Deprecated)](#post-interactionusernamenew-deprecated)
+    - [GET `/interaction` (Deprecated)](#get-interaction-deprecated)
+  - [3. Get Random Cookie and Create New Cookie](#3-get-random-cookie-and-create-new-cookie)
+    - [GET `/cookie/:username`](#get-cookieusername)
+    - [POST `/cookie/:username/new`](#post-cookieusernamenew)
+  - [4. Admin Operations](#4-admin-operations)
+    - [GET `/admin/allUsers`](#get-adminallusers)
+    - [PATCH `/admin/changeRole/:username`](#patch-adminchangeroleusername)
 
 # API
 
@@ -115,7 +122,21 @@ res
     });
 ```
 
-### POST `/user/postaction`
+### DELETE `/user/deleteUser`
+Verify JWT token and existing credentials associated with user before deleting the user. Invalidate pre-existing JWT token.
+
+```js
+res
+    .status(201)
+    .cookie('token', null, {httpOnly: true})
+    .json({
+      success: true,
+      data: { username: deleteUser.username,
+          email: deleteUser.email},
+    });
+```
+
+### POST `/user/postaction` (Deprecated after Testing)
 Verify JWT token retrieved from Request Cookies in order to execute a particular action.
 
 ```js
@@ -132,9 +153,27 @@ res.json({
 Verify JWT token retrieved from Request Cookies and query parameter of `username` to get user interactions.
 
 
-### POST `/interaction/:username/new`
+### POST `/interaction/:username/new` (Deprecated)
 Verify JWT token retrieved from Request Cookies and query parameter of `username` to add new interaction record to that user. 
 
 
-### GET `/interaction`
+### GET `/interaction` (Deprecated)
 Verify JWT token retrieved from Request Cookies in order to 
+
+## 3. Get Random Cookie and Create New Cookie
+
+### GET `/cookie/:username`
+Send back a browser cookie and log in Interaction Table the activity by `username`.
+
+
+### POST `/cookie/:username/new`
+Verify Admin user role, and log in Cookie Table the new cookie created by `username`.
+
+
+## 4. Admin Operations
+
+### GET `/admin/allUsers`
+Verify Admin user role, and send back a list of Registered, __non-admin__ users.
+
+### PATCH `/admin/changeRole/:username`
+Verify Admin user role, and update the role for user with `username`.

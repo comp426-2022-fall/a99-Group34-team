@@ -43,13 +43,112 @@ $--size-radius: 4px;
 
 
 .modal {
-    width: 60vw;
+    width: 50vw;
     color: $pale-grey;
     background: $light-purple;
     border-radius: 8px;
     text-align: center;
     border: 3px solid $purple;
     box-shadow: .7rem .7rem 0 $purple;
+}
+
+.modal button{
+  color:$dark-blue;
+  background-color: $pale-grey;
+}
+.modal-danger {
+  width: 30vw;
+  color: $pale-grey;
+  background: $red;
+  border-radius: 3px;
+  text-align: left;
+  border: 3px solid $light-red;
+  box-shadow: .7rem .7rem 0 $light-red;
+  padding-left: 30px;
+  .header {
+    width: 80%;
+    font-size: calc(15px + 1vmin);
+    border-bottom: 4px solid $pale-grey;
+    font-weight: bold;
+    padding: 20px 0;
+    margin-bottom: 15px;
+  }
+}
+
+.modal-user {
+  width: 20vw;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  color:$dark-blue;
+  background-color: $light-blue;
+  border-radius: 3px;
+  text-align: center;
+  border: 3px solid $light-green;
+  .header {
+    width: 80%;
+    font-size: calc(8px + 1vmin);
+    border-bottom: 2px solid $pale-grey;
+    font-weight: bold;
+    padding: 10px 0;
+    margin-bottom: 5px;
+  }
+  .content {
+    // display: inline;
+    font-size: calc(8px + 1vmin);
+  }
+}
+
+.modal-table {
+  width: 40vw;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  color:$dark-blue;
+  background-color: $light-green;
+  border-radius: 3px;
+  text-align: center;
+  align-items: center;
+  border: 3px solid $yellow;
+  box-shadow: .7rem .7rem 0 $yellow;
+  .header {
+    width: 100%;
+    font-size: calc(15px + 1vmin);
+    font-weight: bold;
+    // padding: 10px 0;
+    margin-top: 15px;
+  }
+  .content {
+    // display: inline;
+    padding:10px;
+  }
+}
+
+.modal-dashboard {
+  width: 50vw;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  color: $pale-grey;
+  background: $black-pink;
+  border-radius: 3px;
+  border: 3px solid $light-purple;
+  box-shadow: .7rem .7rem 0 $light-purple;
+  .header {
+    width: 100%;
+    font-size: calc(15px + 1vmin);
+    font-weight: bold;
+    // padding: 10px 0;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .content {
+    // display: inline;
+    padding:10px;
+  }
+  button {
+    color: $pale-grey
+  }
 }
 
 .modal .header {
@@ -69,6 +168,8 @@ $--size-radius: 4px;
     line-height: calc(15px + 1vmin);
     margin-bottom: 20px;
 }
+
+
 .modal .userinputs {
     text-align: left;
 }
