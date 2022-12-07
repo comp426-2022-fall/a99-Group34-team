@@ -58,7 +58,7 @@ const AdminView = () => {
             alert(data['data']);
             setIsAddingCookie(false);
         } else {
-            alert('Error occured: '+data['error']);
+            alert('Error occured: Forbidden');
         }
     }
 
